@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Add new Author to Book</title>
+    <style type="text/css">
+        body {
+            width: 800px;
+            margin: auto;
+        }
+        table {
+            width: 100%;
+        }
+        table, td, th {
+            border: 1px solid black;
+            padding: 3px 2px;
+        }
+        section {
+            float: left;
+            margin: 0 1.5%;
+            width: 63%;
+        }
+        aside {
+            float: right;
+            margin: 0 1.5%;
+            width: 30%;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Select the Author to add to the Book</h1>
+</header>
+<section>
+    <h2>Select author:</h2>
+    <form  method="post">
+        <input type="hidden" name="bookIsbn" th:value="${selectedBookIsbn}" />
+        <ul th:each="author : ${authors}">
+            <li>
+                <input type="radio" th:name="authorId" th:value="${author.id}"/>
+                <label th:text="${author.name}"></label>
+            </li>
+        </ul>
+        <br/>
+
+        <input type='submit' value='Add author'>
+    </form>
+</section>
+<aside>
+    <table>
+        <tr>
+            <td><b>Book ISBN</b></td>
+            <td th:text="${selectedBookIsbn}"></td>
+        </tr>
+    </table>
+</aside>
+</body>
+</html>
