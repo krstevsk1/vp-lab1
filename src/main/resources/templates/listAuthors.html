@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Authors - select an author</title>
+    <style type="text/css">
+        body {
+            width: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Authors</h1>
+</header>
+<main>
+    <h2>Choose an author:</h2>
+    <form  method="post">
+        <ul th:each="author : ${authors}">
+            <li>
+                <input type="radio" th:name="authorId" th:value="${author.name}"/>
+                <label th:text="${'Title: ' + author.name}"></label>
+            </li>
+        </ul>
+        <input type="submit" value="Submit"/>
+    </form>
+</main>
+</body>
+</html>
