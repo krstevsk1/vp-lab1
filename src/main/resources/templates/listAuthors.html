@@ -19,7 +19,7 @@
     <form  method="post">
         <ul th:each="author : ${authors}">
             <li>
-                <input type="radio" th:name="authorId" th:value="${author.name}"/>
+                <input type="radio" th:name="authorId" th:value="${author.id}"/>
                 <label th:text="${'Title: ' + author.name}"></label>
             </li>
         </ul>

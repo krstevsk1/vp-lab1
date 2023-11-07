@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Book Details</title>
+</head>
+<body>
+<header>
+    <h1 th:if="${selectedAuthor}" th:text="${selectedAuthor.name}"></h1>
+</header>
+<section>
+    <h2 th:if="${selectedAuthor}" th:text="${selectedAuthor.surname}"></h2>
+    <h2 th:if="${selectedAuthor}" th:text="${selectedAuthor.biography}"></h2>
+</section>
+</body>
+</html>
