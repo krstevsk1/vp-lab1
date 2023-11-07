@@ -15,14 +15,18 @@ import org.thymeleaf.web.IWebExchange;
 import org.thymeleaf.web.servlet.JakartaServletWebApplication;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @WebServlet(urlPatterns = "/authorDetails")
 public class AuthorDetails extends HttpServlet {
     private final SpringTemplateEngine springTemplateEngine;
     private final AuthorService authorService;
-    public AuthorDetails(SpringTemplateEngine springTemplateEngine, AuthorService authorService) {
+    private final BookService bookService;
+    public AuthorDetails(SpringTemplateEngine springTemplateEngine, AuthorService authorService, BookService bookService) {
         this.springTemplateEngine = springTemplateEngine;
         this.authorService = authorService;
+        this.bookService = bookService;
     }
 
 
@@ -36,7 +40,12 @@ public class AuthorDetails extends HttpServlet {
         Long selectedId = Long.valueOf(req.getParameter("selectedId"));
 
         Author selectedAuthor = authorService.findById(selectedId);
+        List<Book> books = bookService.listBooks();
+        List<Book> allBooks = books.stream()
+                .filter(b -> b.getAuthors().contains(selectedAuthor))
+                .toList();
         context.setVariable("selectedAuthor", selectedAuthor);
+        context.setVariable("bookList", allBooks);
 
         springTemplateEngine.process(
                 "authorDetails.html",
