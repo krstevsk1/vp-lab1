@@ -15,6 +15,7 @@
     <h1>Welcome to My Book Store</h1>
 </header>
 <main>
+    <h3 th:value="${error}"/>
     <h2>Choose a book:</h2>
     <form  method="post">
         <ul th:each="book : ${books}">

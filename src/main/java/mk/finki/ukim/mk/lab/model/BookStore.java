@@ -9,12 +9,10 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Book {
+public class BookStore {
     private Long id;
-    private String isbn;
-    private String title;
-    private String genre;
-    private int year;
-    private BookStore bookStore;
-    private List<Author> authors;
+    private String name;
+    private String city;
+    private String address;
+    private List<Book> books;
 }

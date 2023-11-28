@@ -11,4 +11,7 @@ public interface BookService {
     List<Book> listBooks();
     Author addAuthorToBook(Long authorId, String isbn);
     Book findBookByIsbn(String isbn);
+    String saveBook(String name, String isbn, String genre, int year, int id);
+    String editBook(Long bookId, String title, String isbn, String genre, int year, int id);
+    String deleteBook(Long id);
 }
